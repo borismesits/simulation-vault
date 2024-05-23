@@ -206,7 +206,7 @@ b = apply_PP_squeezing(a, G_1, theta)
 phi = np.pi*0.1
 c = np.array([apply_rotation(phi, b[0]),b[1]])
 
-theta = np.pi*0.5 + offset_theta
+theta = np.pi + offset_theta
 d = apply_PP_squeezing(c, G_2, theta)
 
 # plt.scatter(np.real(a[0]),np.imag(a[0]),color='r',marker='_') # plot points in IQ plane, for both components of ain and bout
