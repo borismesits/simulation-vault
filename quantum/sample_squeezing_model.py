@@ -500,7 +500,7 @@ plt.legend()
 
 #%%
 
-fidelity, PDFg, PDFe, x, y = TMS_exp(1000000, nbar=50, theta=np.pi/8, noise=10, r1=1, r2=2, phi1=0, phi2=np.pi, plot=True)
+fidelity, PDFg, PDFe, x, y = TMS_exp(1000000, nbar=100, theta=np.pi/8, noise=10, r1=2, r2=2, phi1=0, phi2=np.pi, plot=True)
 
 #%%
 
@@ -509,5 +509,5 @@ fidelity, PDFg, PDFe, x, y = PPamp_exp(1000000, nbar=100, theta=np.pi/8, noise=1
 
 #%%
 
-fidelity, PDFg, PDFe, x, y = PSamp_exp(1000000, nbar=0, theta=np.pi/8, noise=10, r=1, phi=np.pi, plot=True)
+fidelity, PDFg, PDFe, x, y = PSamp_exp(1000000, nbar=100, theta=np.pi/8, noise=10, r=2, phi=np.pi, plot=True)
 
