@@ -70,6 +70,21 @@ class MCSqueezer():
 
         self.step_names.append('Loss')
 
+    def addnoise(self, sigma):
+        '''
+        Models a HEMT (non-quantum object)
+        '''
+
+        lib = self.lib
+
+        noise = self.gen_vac_noise(sigma)
+
+        self.samples = self.samples + noise
+
+        self.samples_history.append(self.samples.copy())
+
+        self.step_names.append('Added Noise')
+
     def propeller(self, kerr):
 
         N = self.N
@@ -236,6 +251,22 @@ class MCSqueezer():
 
         self.step_names.append('1MS')
 
+    def one_mode_squeeze_signal(self, phi, r):
+            lib = self.lib
+
+            op = lib.array([[np.cosh(r) + np.cos(phi) * np.sinh(r), np.sin(phi) * np.sinh(r), 0, 0],
+                            [np.sin(phi) * np.sinh(r), np.cosh(r) - np.sinh(r) * np.cos(phi), 0, 0],
+                            [0, 0, 1, 0],
+                            [0, 0, 0, 1]])
+
+            self.samples = lib.dot(op, self.samples)
+
+            self.samples = lib.clip(self.samples, a_min=-1000, a_max=1000)
+
+            self.samples_history.append(self.samples.copy())
+
+            self.step_names.append('1MS')
+
     def two_mode_squeeze(self, phi, r):
 
         lib = self.lib
@@ -251,14 +282,14 @@ class MCSqueezer():
 
         self.step_names.append('2MS')
 
-    def beamsplit_signal_idler(self, phi):
+    def beamsplit_signal_idler(self, theta, phi):
 
         lib = self.lib
 
-        op = lib.array([[np.cos(phi), 0, np.sin(phi), 0],
-                    [0, np.cos(phi), 0, np.sin(phi)],
-                    [-np.sin(phi), 0, np.cos(phi), 0],
-                    [0, - np.sin(phi), 0, np.cos(phi)]])
+        op = lib.array([[np.cos(theta),              0,                          np.sin(theta)*np.cos(phi),  np.sin(theta)*np.sin(phi)],
+                        [0,                          np.cos(theta),              -np.sin(theta)*np.sin(phi), np.sin(theta)*np.cos(phi)],
+                        [-np.sin(theta)*np.cos(phi), np.sin(theta)*np.sin(phi),  np.cos(theta),              0],
+                        [-np.sin(theta)*np.sin(phi), -np.sin(theta)*np.cos(phi), 0,                          np.cos(theta)]])
 
         self.samples = lib.dot(op, self.samples)
 
@@ -270,22 +301,33 @@ class MCSqueezer():
 
         lib = self.lib
 
-        op1 = lib.array([[np.cos(-theta/2), -np.sin(-theta/2), 0, 0],
-                        [np.sin(-theta/2), np.cos(-theta/2), 0, 0],
-                        [0, 0, 1, 0],
-                        [0, 0, 0, 1]])
+        op1 = lib.array([[np.cos(-theta / 2), -np.sin(-theta / 2), 0, 0],
+                         [np.sin(-theta / 2), np.cos(-theta / 2), 0, 0],
+                         [0, 0, 1, 0],
+                         [0, 0, 0, 1]])
 
-        op2 = lib.array([[np.cos(theta/2), -np.sin(theta/2), 0, 0],
-                        [np.sin(theta/2), np.cos(theta/2), 0, 0],
-                        [0, 0, 1, 0],
-                        [0, 0, 0, 1]])
+        op2 = lib.array([[np.cos(theta / 2), -np.sin(theta / 2), 0, 0],
+                         [np.sin(theta / 2), np.cos(theta / 2), 0, 0],
+                         [0, 0, 1, 0],
+                         [0, 0, 0, 1]])
 
-        self.samples[:, 0:self.N//2] = lib.dot(op1, self.samples[:, 0:self.N//2])
-        self.samples[:, self.N//2:] = lib.dot(op2, self.samples[:, self.N//2:])
+        self.samples[:, 0:self.N // 2] = lib.dot(op1, self.samples[:, 0:self.N // 2])
+        self.samples[:, self.N // 2:] = lib.dot(op2, self.samples[:, self.N // 2:])
 
         self.samples_history.append(self.samples.copy())
 
         self.step_names.append('Disp. Shift')
+
+    def conditionally_displace_signal(self, theta, r):
+
+        lib = self.lib
+
+        self.samples[:, 0:self.N // 2] = self.samples[:, 0:self.N // 2] + lib.expand_dims(lib.array([np.cos(theta)*r, np.sin(theta)*r, 0, 0]), 1)
+        self.samples[:, self.N // 2:] = self.samples[:, self.N // 2:] - lib.expand_dims(lib.array([np.cos(theta)*r, np.sin(theta)*r, 0, 0]), 1)
+
+        self.samples_history.append(self.samples.copy())
+
+        self.step_names.append('Cond. Displacement')
 
     def displace(self, dsi, dsq, dii, diq):
 

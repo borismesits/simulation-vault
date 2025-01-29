@@ -195,8 +195,8 @@ a = np.array([a1, a2])
 # phi = np.pi*0.4
 # a = np.array([apply_rotation(phi, a[0]),a[1]])
 
-G_1 = 10
-G_2 = 10
+G_1 = 20
+G_2 = 20
 
 offset_theta = np.pi*0.0
 
