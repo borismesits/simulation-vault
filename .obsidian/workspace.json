@@ -1,0 +1,190 @@
+{
+  "main": {
+    "id": "7d99f36123dc0792",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7232590dd14c82c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a301ffd8c5382241",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "quantum/demo.png"
+              },
+              "icon": "lucide-image",
+              "title": "demo"
+            }
+          },
+          {
+            "id": "cadd2f42b1654e38",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Testing simulation vault.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Testing simulation vault"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3ef32c34cc9f4a0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "1b74373c897876b7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "596fbe0d5221a946",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0a8fbf855e477e0c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c2e5678c83198a3c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6b1ac5d474d1f0cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "140fa4a9dde59896",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "907fe6dc55b3cabd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Testing simulation vault.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Testing simulation vault"
+            }
+          },
+          {
+            "id": "8f817a0b58b918a3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Testing simulation vault.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Testing simulation vault"
+            }
+          },
+          {
+            "id": "552c31dc00144b3a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "82734bf864bd8445",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Testing simulation vault.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Testing simulation vault"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "cadd2f42b1654e38",
+  "lastOpenFiles": [
+    "QuickStart.md",
+    "Testing simulation vault.md",
+    "quantum/demo.png"
+  ]
+}

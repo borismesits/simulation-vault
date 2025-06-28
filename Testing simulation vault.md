@@ -1,0 +1,2 @@
+![[Parametrically Controlled Networks.ipynb]]
+
